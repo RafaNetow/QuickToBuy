@@ -7,6 +7,7 @@ using NHibernate;
 using NLog;
 namespace Data
 {
+ //comentario cualqioera
     public class WriteOnlyRepository : IWriteOnlyRepository
     {
         public static Logger log = LogManager.GetCurrentClassLogger();
