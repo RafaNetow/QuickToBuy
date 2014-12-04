@@ -1,0 +1,93 @@
+﻿@using Domain.Entities
+@using MiPrimerMVC.Controllers
+@using MiPrimerMVC.Models
+@model MiPrimerMVC.Models.UserModel
+@{
+    ViewBag.Title = "Welcome to quick buy";
+
+
+}
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+
+            <link href="~/Content/Letra3D.css" rel="stylesheet" />
+            <h1 class="text-center text-info">
+
+
+                Welcome to Quick buy
+            </h1>
+        </div>
+        <div class="col-md-6 column">
+            <img alt="140x140" src="https://dl-web.dropbox.com/get/AplicacionParaWebToQuick/supermercado-ahorro.jpg?_subject_uid=272817219&w=AADXJ64Z2-huH8120-1XdIfbjqHF1YyQAY4IuqJWobh0GQ" border="0" height="200" width="200" class="img-circle" />
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img alt="300x200" src="https://dl-web.dropbox.com/get/AplicacionParaWebToQuick/icono-informacion.png?_subject_uid=272817219&w=AACqEITvQLOa_j-xCnuHs7NkkfyjsZWk1juQd2RD2Uf2mQ" />
+                        <div class="caption">
+                            <h3>
+                                Que es Quick to buy?
+                            </h3>
+                            <p>
+                                No te funcionan las ventas de garash? quieres vender algun objeto de casa pero no te atrevez a venderlo? Quick to buy te facilita todo solo tomale foto ponle precio y Listo
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" @Html.ActionLink("Termes", "Termes", "Register")>Mas informacion</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img alt="300x200" src="https://dl-web.dropbox.com/get/AplicacionParaWebToQuick/sign-up-icon.png?_subject_uid=272817219&w=AADns_WE5OJIUnHs1WeE0mD8anokE0aOjUjK8yP0q4su_A" />
+                        <div class="caption">
+                            <h3>
+                                Facil De Registrar
+                            </h3>
+                            <p>
+                                Registrate  para comenzar una  experiencia inolvidable
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" @Html.ActionLink("SignUp", "SignUp", "Home")></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+
+                        <img alt="300x200" src="https://dl-web.dropbox.com/get/AplicacionParaWebToQuick/Log%20in.png?_subject_uid=272817219&w=AACr0FQxRq6MLjUiM_QafSd1bZ-ufrq1B82Rk1krKKdm0g" />
+                        <div class="caption">
+                            <h3>
+                                Login
+                            </h3>
+                            <p>
+                                Ve las ofertas del momento
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" @Html.ActionLink("Login", "Login", "Account")></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+            <img alt="140x140" src="https://dl-web.dropbox.com/get/AplicacionParaWebToQuick/facebook.png?_subject_uid=272817219&w=AACw-WAfMahASXiMcKK_k-WyKdTAJDph5t2DibnYoK9Rpw" class="img-rounded" /> <button type="Login" class="btn btn-success active btn-default">Login With Facebook</button>
+        </div>
+
+        <div class="col-md-6 column">
+
+            <img alt="140x140" src="https://dl-web.dropbox.com/get/AplicacionParaWebToQuick/Twitter%20Logo.png?_subject_uid=272817219&w=AAA3cS40BezoOF5rLDyb1A0J7XnwnI1r75LXEcBYqMK8cQ" /> <button type="button" class="btn btn-primary">Login With twitter</button>
+        </div>
+    </div>
+</div>

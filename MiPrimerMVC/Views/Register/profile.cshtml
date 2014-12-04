@@ -1,0 +1,134 @@
+﻿
+@using Domain.Entities
+@using MiPrimerMVC.Controllers
+@using MiPrimerMVC.Models
+@model MiPrimerMVC.Models.UserModel
+@{
+    ViewBag.Title = "profile";
+}
+
+@using (Html.BeginForm("profile", "Register", null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+
+    
+}
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row clearfix">
+                <div class="col-md-6 column">
+                    <img alt="100x100" src="https://dl.dropboxusercontent.com/s/mfjra9ku8zdpj5n/Actions-im-user-icon.png?dl=0" />
+                </div>
+                <div class="col-md-6 column">
+                    <h3>
+                        @Html.ValueFor(x => x.Name) @Html.ValueFor(x => x.Lastname)
+                    </h3>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-6 column">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    Product
+                                </th>
+                                <th>
+                                    Categoria
+                                </th>
+                                <th>
+                                    Precio
+                                </th>
+                                <th>
+                                    Imagen
+                                </th>
+                                <th>
+                                    Acciones
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                  
+                                </td>
+                                <td>
+                               
+                                </td>
+                                <td>
+                                  
+                                </td>
+                            </tr>
+                            <tr class="active">
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                   
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            @if (Model.Productos != null) {  
+                            foreach (Products operacion in Model.Productos)
+{
+    <tr>
+        <td>
+            @Html.ActionLink(@operacion.Id.ToString(), "PorfileEdit","Register", new { @id = @operacion.Id }, null)
+          
+        </td>
+        <td>@operacion.Name</td>
+        <td>@operacion.Category</td>
+        <td>@operacion.Preci</td>
+      
+        <td><img src="@operacion.UrlImage"  style="width:100px;height:100px"></td>
+        <td>
+            <a href='@Url.Action("PorfileEdit", "Register", new { @id = @operacion.Id },null)' target="_blank">
+                <img src="https://dl.dropbox.com/s/g1yb77jy0wymcf5/Edit.png?dl =0" style="width:50px;height:50px" />
+            </a>
+        </td>
+            
+        
+    </tr>
+}
+                            }                  
+                              <tr class="success">
+                                <td>
+                                   
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                 
+                                </td>
+                            </tr>
+                            
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 column">
+                    <img alt="100x100" src="https://dl.dropboxusercontent.com/s/w0v62mxo4vsl2mc/producto.jpg?dl=0"  /> <a class="btn btn-primary" @Html.ActionLink("Add", "Addproduct", "Register")></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+

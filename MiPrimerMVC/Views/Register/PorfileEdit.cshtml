@@ -1,0 +1,74 @@
+﻿@using Domain.Entities
+@using MiPrimerMVC.Controllers
+@using MiPrimerMVC.Models
+@model MiPrimerMVC.Models.ProductModel
+@{
+    ViewBag.Title = "PorfileEdit";
+}
+@using (Html.BeginForm("PorfileEdit", "Register", null, FormMethod.Post, new {@class = "form-horizontal"}))
+{
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>New Product</legend>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Name</label>
+                    <div class="col-sm-10">
+
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control input-lg" })
+
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Category</label>
+                    <div class="col-sm-10">
+
+
+                        @Html.TextBoxFor(x => x.Category, new { @class = "form-control input-lg" })
+                    </div>
+                </div>
+                <!-- Text input-->
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Preci</label>
+                    <div class="col-sm-4">
+
+                        @Html.TextBoxFor(x => x.Preci, new { @class = "form-control input-lg" })
+                    </div>
+                    <label class="col-sm-2 control-label" for="textinput">Coin</label>
+                    <div class="col-sm-4">
+
+                        @Html.TextBoxFor(x => x.Coin, new { @class = "form-control input-lg" })
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">UrlImagen</label>
+                    <div class="col-sm-10">
+                        
+                        @Html.TextBoxFor(x => x.UrlImage, new { @class = "form-control input-lg" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="pull-right">
+
+    <a class="btn btn-default" @Html.ActionLink("Cancelar", "profile", "Register")></a>
+    <button type="submit" class="btn btn-primary">Save</button>
+ 
+
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div><!-- /.col-lg-12 -->
+</div>
+}
+ 
+

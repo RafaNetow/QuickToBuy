@@ -1,0 +1,118 @@
+﻿@using Domain.Entities
+@using MiPrimerMVC.Controllers
+@using MiPrimerMVC.Models
+@model MiPrimerMVC.Models.QuestionsModel
+@{
+    ViewBag.Title = "Question";
+}
+
+@using (Html.BeginForm("Question", "Register", null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+            <h3 class="text-center">
+                <img alt="70x70" src="https://dl.dropbox.com/s/o2sd9cdhtb7mzwm/KeepCalms.png?dl=0" />
+
+            </h3>
+        </div>
+        <div class="col-md-6 column">
+            <h3 class="text-center">
+                Frequency Questions
+            </h3>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+            <h3 class="text-center">
+                Questions
+            </h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Usuario
+                        </th>
+                        <th>
+                            Pregunta
+                        </th>
+                        <th>
+                            Respuesta
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.allQuestions != null)
+                    {
+                        foreach (EQuestions operacion in Model.allQuestions)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>@operacion.pregunta</td>
+                                <td>@operacion.respuesta</td>
+
+
+                            </tr>
+                        }
+                    } 
+                    
+                   
+                </tbody>
+            </table>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Escribe tu comentario</label>
+                    <div class="col-sm-10">
+                        @Html.LabelFor(x => x.question)
+                        @Html.TextBoxFor(x => x.question, new { @class = "form-control input-lg" })
+                        
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label><input type="checkbox" /> Remember me</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">OK</button>
+                     
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 column">
+            <h3>
+            
+            </h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th>
+                            Pregunta
+                        </th>
+                        <th>
+                            Respuesta
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                
+                  
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+        </div>
+    </div>
+</div>
+
+}
