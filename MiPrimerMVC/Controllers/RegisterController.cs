@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Configuration;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Domain.Entities;
 using Domain.Services;
-using Microsoft.Ajax.Utilities;
 using MiPrimerMVC.Models;
-using MiPrimerMVC.ProyectHelpers;
-using System.Windows.fo;
 
 namespace MiPrimerMVC.Controllers
 {

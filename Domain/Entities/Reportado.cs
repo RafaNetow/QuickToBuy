@@ -9,8 +9,8 @@ namespace Domain.Entities
     public class Reportado : IEntity
     {
         public virtual long Id { get; set; }
-        public virtual string user { get; set; }
-        public virtual string Producto { get; set; } 
+        public virtual Users Usuario { get; set; }
+        public virtual Products Producto { get; set; } 
         public virtual bool Archived { get; protected set; }
         public virtual void Archive()
         {
