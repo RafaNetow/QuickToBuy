@@ -20,7 +20,7 @@ namespace MiPrimerMVC.ProyectHelpers
             var keys = new System.Collections.Specialized.NameValueCollection();
             try
             {
-                keys.Add("imageBytes", Convert.ToBase64String(imageBytes));
+                keys.Add("image", Convert.ToBase64String(imageBytes));
                 var responseArray = w.UploadValues("https://api.imgur.com/3/image", keys);
                 dynamic result = Encoding.ASCII.GetString(responseArray);
                 var reg = new System.Text.RegularExpressions.Regex("link\":\"(.*?)\"");

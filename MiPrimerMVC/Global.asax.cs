@@ -31,10 +31,13 @@ namespace MiPrimerMVC
         {
             CurrentSessionContext.Unbind(SessionFactory).Dispose();
         }
+
         private void MvcApplication_BeginRequest(object sender, EventArgs e)
         {
             CurrentSessionContext.Bind(SessionFactory.OpenSession());
         }
+
+
         public static ISessionFactory CreateSessionFactory()
         {
             string connectionString = ConnectionStrings.Get();

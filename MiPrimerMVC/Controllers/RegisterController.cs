@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Configuration;
 using System.Web;
@@ -8,6 +9,8 @@ using Domain.Entities;
 using Domain.Services;
 using Microsoft.Ajax.Utilities;
 using MiPrimerMVC.Models;
+using MiPrimerMVC.ProyectHelpers;
+using System.Windows.fo;
 
 namespace MiPrimerMVC.Controllers
 {
@@ -86,14 +89,13 @@ namespace MiPrimerMVC.Controllers
         {
 
             var Detalle = new Products();
-
-            
-              ProductModel obj = (ProductModel)TempData["myObj"];
+           
+             ProductModel obj = (ProductModel)TempData["myObj"];
             UserModel user = (UserModel)Session["Account"];
             Detalle.Name = Model.Name;
             Detalle.Preci = Model.Preci;
             Detalle.Category = Model.Category;
-            //Detalle.UrlImage = obj.UrlImage;
+           Detalle.UrlImage = obj.UrlImage;
             Detalle.Coin = Model.Coin;
             Detalle.username = user.username;
             
@@ -102,6 +104,7 @@ namespace MiPrimerMVC.Controllers
             _writeOnlyRepository).profile(user);
             return result;
         }
+                 
         public ActionResult ProductDetail(long id)
         {
             var productos = _readOnlyRepository.GetById<Products>(id);
@@ -171,6 +174,24 @@ namespace MiPrimerMVC.Controllers
            _writeOnlyRepository).profile(usermodel);
             return result;
             
+        }
+
+        public ActionResult Reportados()
+        {
+            return View();
+        }
+        public ActionResult CrearReportado()
+        {
+            
+            return RedirectToAction("Start");
+        }
+    public static string ArreglarUrl(char[] urlmala, string urlbuena)
+        {
+            for (int i = 5; i < urlmala.Length; i++)
+            {
+                urlbuena = urlbuena + urlmala[i].ToString();
+            }
+            return urlbuena;
         }
     }
 

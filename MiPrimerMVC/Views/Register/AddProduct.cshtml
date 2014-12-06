@@ -51,7 +51,9 @@
                        
                         @Html.TextBoxFor(x => x.Coin, new { @class = "form-control input-lg" })
                     </div>
-                </div>
+                    
+                  
+                    </div>
 
 
 
@@ -77,12 +79,11 @@
 }
  
 <div class="col-md-6 col-md-offset-4">
-
-  
+    
     @using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
 
-        <input type="file" name="Sleccione su imagen" />
         <input type="submit" name="Submit" id="Submit" value="Upload" />
+        @Html.TextBoxFor(m => m.file, new { type = "file" })
     }
 </div>

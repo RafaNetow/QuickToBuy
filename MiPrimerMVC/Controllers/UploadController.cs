@@ -29,40 +29,54 @@ namespace MiPrimerMVC.Controllers
         [HttpPost]
         public ActionResult Upload(ProductModel model)
         {
-            if (Request.Files.Count > 0)
-            {
-                var file = Request.Files[0];
+            
+          //  if (Request.Files.Count > 0)
+         //   {
+              //  var file = Request.Files[0];
+               
 
                 //file.InputStream
-                byte[] imgData;
-                using (BinaryReader reader = new BinaryReader(file.InputStream))
+               // if (file != null)
+                //{
+                   /* byte[] imgData;
+
+                    using (var reader = new BinaryReader(file.InputStream))
+                    {
+                        imgData = reader.ReadBytes((int)file.InputStream.Length);
+                    }*/
+
+                byte[] data;
+                using (Stream inputStream = model.file.InputStream)
                 {
-                    imgData = reader.ReadBytes((int)file.InputStream.Length);
+                    MemoryStream memoryStream = inputStream as MemoryStream;
+                    if (memoryStream == null)
+                    {
+                        memoryStream = new MemoryStream();
+                        inputStream.CopyTo(memoryStream);
+                    }
+                    data = memoryStream.ToArray();
                 }
-                if (file != null && file.ContentLength > 0)
-                {
+                    // if (file.ContentLength > 0)
+                   // {
 
 
 
 
-                    UserModel user = (UserModel)Session["Account"];
-                    var urlImage = (string)ImgurUpload.UploadImage(imgData);
-                    char[] a = urlImage.ToCharArray();
-                    string url = "";
-                    var newurl = ArreglarUrl(a, url);
-                    model.UrlImage = url;
+                         UserModel user = (UserModel)Session["Account"];
+                    var urlImage = (string)ImgurUpload.UploadImage(data);
+                        char[] a = urlImage.ToCharArray();
+                        string url = "";
+                        var newurl = ArreglarUrl(a, url);
+                        model.UrlImage = url;
 
 
-                    model.UrlImage = newurl;
-                    model.username = user.username;
-                    TempData["myObj"] = model;
+                        model.UrlImage = newurl;
+                         model.username = user.username;
+                        TempData["myObj"] = model;
 
-
-
-
-                }
-
-            }
+                 //   }
+              //  }
+            
 
             return RedirectToAction("Addproduct", "Register");
         }
