@@ -40,7 +40,7 @@ namespace MiPrimerMVC.Controllers
                 Id = model.Id,
                 
 
-                Productos = _readOnlyRepository.GetAll<Products>().ToList()
+                Productos = _readOnlyRepository.GetAll<Products>().Where(x=>x.Archived).ToList()
             
             };
             usermodel.Productos.Reverse();
@@ -52,8 +52,9 @@ namespace MiPrimerMVC.Controllers
            
             var user = _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.username == model.username);
             var filters = _readOnlyRepository.GetAll<Products>().ToList();
+           
             filters = filters.FindAll(x => x.username.ToUpper().Contains(model.username.ToUpper()));
-var usermodel = new UserModel()
+            var usermodel = new UserModel()
             {
                 Name =  model.Name,
                 correo = model.correo,
@@ -92,7 +93,7 @@ var usermodel = new UserModel()
             Detalle.Name = Model.Name;
             Detalle.Preci = Model.Preci;
             Detalle.Category = Model.Category;
-            Detalle.UrlImage = obj.UrlImage;
+            //Detalle.UrlImage = obj.UrlImage;
             Detalle.Coin = Model.Coin;
             Detalle.username = user.username;
             
@@ -141,7 +142,7 @@ var usermodel = new UserModel()
             model.Preci = productos.Preci;
             model.Category = productos.Category;
             model.UrlImage = productos.UrlImage;
-
+            model.Archived = productos.Archived;
             
             return View(model);
         }
@@ -156,6 +157,12 @@ var usermodel = new UserModel()
             productos.Preci  = model.Preci;
             productos.Category= model.Category;
             productos.UrlImage = model.UrlImage;
+            if (model.Archived)
+                productos.Activate();
+            else
+            {
+                productos.Archive();
+            }
             var Editado = _writeOnlyRepository.Update(productos);
             UserModel usermodel = (UserModel)Session["Account"];
 

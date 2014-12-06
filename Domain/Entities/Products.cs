@@ -20,12 +20,19 @@ namespace Domain.Entities
        
         public virtual void Archive()
         {
-            throw new NotImplementedException();
+            Archived = false;
         }
 
         public virtual void Activate()
         {
-            throw new NotImplementedException();
+            Archived = true;
         }
+
+        public virtual bool IsArchived()
+        {
+            return Archived;
+        }
+
+
     }
 }

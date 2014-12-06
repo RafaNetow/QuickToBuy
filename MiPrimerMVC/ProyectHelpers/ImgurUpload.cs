@@ -11,16 +11,16 @@ namespace MiPrimerMVC.ProyectHelpers
 {
     public class ImgurUpload
     {
-    private const string ClientId = "fccc9c092089aea";
+        private const string ClientId = "fccc9c092089aea";
 
-        public static object UploadImage(string image)
+        public static object UploadImage(byte[] imageBytes)
         {
             var w = new WebClient();
             w.Headers.Add("Authorization", "Client-ID " + ClientId);
             var keys = new System.Collections.Specialized.NameValueCollection();
             try
             {
-                keys.Add("image", Convert.ToBase64String(File.ReadAllBytes(image)));
+                keys.Add("imageBytes", Convert.ToBase64String(imageBytes));
                 var responseArray = w.UploadValues("https://api.imgur.com/3/image", keys);
                 dynamic result = Encoding.ASCII.GetString(responseArray);
                 var reg = new System.Text.RegularExpressions.Regex("link\":\"(.*?)\"");
@@ -36,4 +36,4 @@ namespace MiPrimerMVC.ProyectHelpers
         }
 
     }
-    }
+}

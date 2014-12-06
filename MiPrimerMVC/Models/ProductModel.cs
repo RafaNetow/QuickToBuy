@@ -9,7 +9,7 @@ namespace MiPrimerMVC.Models
     public class ProductModel
     {
        public virtual long Id { get; set; }
-        public virtual bool Archived { get; protected set; }
+        public virtual bool Archived { get;  set; }
         public virtual string Name { get; set; }
         public virtual string Category { get; set; }
         public virtual double Preci { get; set; }

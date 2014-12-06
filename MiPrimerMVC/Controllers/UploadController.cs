@@ -18,9 +18,9 @@ namespace MiPrimerMVC.Controllers
     public class UploadController : Controller
     {
         // GET: Upload
-          
+
         //
-        
+
         public ActionResult Index()
         {
             return View();
@@ -32,32 +32,36 @@ namespace MiPrimerMVC.Controllers
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
-                
+
+                //file.InputStream
+                byte[] imgData;
+                using (BinaryReader reader = new BinaryReader(file.InputStream))
+                {
+                    imgData = reader.ReadBytes((int)file.InputStream.Length);
+                }
                 if (file != null && file.ContentLength > 0)
                 {
 
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Image/"), fileName);
 
-                    //  var path = Path.GetDirectoryName(file.FileName);
+
 
                     UserModel user = (UserModel)Session["Account"];
-                    var urlImage = (string)ImgurUpload.UploadImage(path);
+                    var urlImage = (string)ImgurUpload.UploadImage(imgData);
                     char[] a = urlImage.ToCharArray();
                     string url = "";
-                    var newurl =ArreglarUrl(a, url);
+                    var newurl = ArreglarUrl(a, url);
                     model.UrlImage = url;
 
 
-                    model.UrlImage= newurl;
+                    model.UrlImage = newurl;
                     model.username = user.username;
                     TempData["myObj"] = model;
-                    
-                 
 
-                    
+
+
+
                 }
-              
+
             }
 
             return RedirectToAction("Addproduct", "Register");
@@ -68,7 +72,7 @@ namespace MiPrimerMVC.Controllers
             throw new NotImplementedException();
         }
 
-        public static string ArreglarUrl(char[] urlmala,string urlbuena )
+        public static string ArreglarUrl(char[] urlmala, string urlbuena)
         {
             for (int i = 5; i < urlmala.Length; i++)
             {
@@ -78,5 +82,5 @@ namespace MiPrimerMVC.Controllers
         }
     }
 
-    
+
 }
