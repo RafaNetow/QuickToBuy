@@ -12,7 +12,7 @@
         <form class="form-horizontal" role="form">
             <fieldset>
                 <!-- Form Name -->
-                <legend>New Product</legend>
+                <legend>Edit Product</legend>
                 <!-- Text input-->
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="textinput">Name</label>
@@ -48,7 +48,7 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="textinput">UrlImagen</label>
+                    <label class="col-sm-2 control-label" for="textinput">Activar/Desactivar Producto</label>
                     <div class="col-sm-10">
                         
                         @Html.CheckBoxFor(x => x.Archived, new { @class = "form-control input-lg" })
@@ -59,7 +59,7 @@
                         <div class="pull-right">
 
     <a class="btn btn-default" @Html.ActionLink("Cancelar", "profile", "Register")></a>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">Edit</button>
  
 
                         </div>

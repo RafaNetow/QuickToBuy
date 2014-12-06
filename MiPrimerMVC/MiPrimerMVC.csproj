@@ -213,6 +213,7 @@
     <Content Include="Views\Register\QuestionsDetails.cshtml" />
     <Content Include="Views\Register\PorfileEdit.cshtml" />
     <Content Include="Views\Upload\Index.cshtml" />
+    <Content Include="Views\Register\Reportados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

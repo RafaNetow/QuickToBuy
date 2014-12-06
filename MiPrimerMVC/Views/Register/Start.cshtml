@@ -50,6 +50,9 @@
                         <th>
                             Precio
                         </th>
+                        <th>
+                            Acciones
+                        </th>
                     </tr>
               @Model.Productos.ToList();
                          @if (Model.Productos != null) {
@@ -66,7 +69,11 @@
                                     <td>@operacion.Name</td>
                                     <td>@operacion.Category</td>
                                     <td>@operacion.Preci</td>
-                                    <td></td>
+                                    <td>
+                                        <a href='@Url.Action("PorfileEdit", "Register", new { @id = @operacion.Id },null)' target="_blank">
+                                            <img src="https://dl.dropbox.com/s/48uisxcazat1z8p/ProductoReportado.png?dl=0" style="width:50px;height:50px" />
+                                        </a>
+                                    </td>
                                 </tr>
 }
                 }
@@ -100,6 +107,9 @@
                         <th>
                             Precio
                         </th>
+                        <th>
+                          Acciones
+                        </th>
                     </tr>
                 @if (Model.Productos != null) {
                             foreach (Products operacion in Model.Productos)
@@ -108,11 +118,12 @@
                                     <td>
                                         @Html.ActionLink(@operacion.Id.ToString(), "ProductDetail", new { @id = @operacion.Id }, null)
                                     </td>
-                                    <td>@operacion.Id</td>
                                     <td>@operacion.Name</td>
-                                    <td>@operacion.Category</td>
-                                    <td>@operacion.Preci</td>
-                                    <td></td>
+                                     <td>@operacion.Category</td>
+                                     <td>@operacion.Preci</td>
+                                    <td><a href='@Url.Action("PorfileEdit", "Register", new { @id = @operacion.Id },null)' target="_blank">
+    <img src="https://dl.dropbox.com/s/48uisxcazat1z8p/ProductoReportado.png?dl=0" style="width:50px;height:50px" />
+</a></td>
                                 </tr>
 }
                 }

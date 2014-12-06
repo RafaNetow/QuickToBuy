@@ -1,0 +1,86 @@
+﻿@using Domain.Entities
+@using MiPrimerMVC.Controllers
+@using MiPrimerMVC.Models
+@model MiPrimerMVC.Models.UserModel
+@{
+    ViewBag.Title = "Reportados";
+}
+
+<h2>Reportados</h2>
+
+div class="container">
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <div class="row clearfix">
+            <div class="col-md-6 column">
+
+            </div>
+            <div class="col-md-6 column">
+                <h3>
+                    Productos Reportados por usuario
+
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="col-md-6 column">
+        <div class="row clearfix">
+            <div class="col-md-6 column">
+                <h3>
+                    Agregados Recientemente
+                </h3>
+            </div>
+            <div class="col-md-6 column">
+                <img alt="140x140" src="http://lorempixel.com/140/140/" />
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Product
+                    </th>
+                    <th>
+                        Categoria
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+                @Model.Productos.ToList();
+                @if (Model.Productos != null)
+                {
+                    foreach (Products operacion in Model.Productos)
+                    {
+                        <tr>
+                            <td>
+
+                                @Html.ActionLink(@operacion.Id.ToString(), "ProductDetail", new { @id = @operacion.Id }, null)
+                            </td>
+
+
+                            <td>@operacion.Name</td>
+                            <td>@operacion.Category</td>
+                            <td>@operacion.Preci</td>
+                            <td>
+                                <a href='@Url.Action("PorfileEdit", "Register", new { @id = @operacion.Id },null)' target="_blank">
+                                    <img src="https://dl.dropbox.com/s/48uisxcazat1z8p/ProductoReportado.png?dl=0" style="width:50px;height:50px" />
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </thead>
+
+        </table>
+    </div>
+</div>  
+
