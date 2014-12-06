@@ -41,7 +41,7 @@ namespace MiPrimerMVC.Controllers
         public ActionResult SignUp(UserModel Model)
          {
 
-             var user = new User();
+             var user = new Users();
 
              
              user.Name = Model.Name;

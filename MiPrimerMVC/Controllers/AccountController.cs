@@ -27,8 +27,8 @@ namespace MiPrimerMVC.Controllers
 	     [HttpPost]
         public ActionResult Login(AccountLoginModel model)
 	     {
-	         var user= _readOnlyRepository.FirstOrDefault<User>(usuario => usuario.correo == model.Email);
-             user= _readOnlyRepository.FirstOrDefault<User>(usuario => usuario.username == model.Email);
+	         var user= _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.correo == model.Email);
+             user= _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.username == model.Email);
              var Questions = _readOnlyRepository.GetAll<EQuestions>().ToList();
              var usermodel = new UserModel();
              var modelQuestion = new QuestionsModel();	        

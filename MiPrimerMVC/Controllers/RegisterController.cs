@@ -29,7 +29,7 @@ namespace MiPrimerMVC.Controllers
         public ActionResult Start()
         {
             UserModel model = (UserModel)Session["Account"];
-            var user = _readOnlyRepository.FirstOrDefault<User>(usuario => usuario.username == model.username);
+            var user = _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.username == model.username);
             
             var usermodel = new UserModel()
             {
@@ -50,7 +50,7 @@ namespace MiPrimerMVC.Controllers
         public ActionResult profile(UserModel model)
         {
            
-            var user = _readOnlyRepository.FirstOrDefault<User>(usuario => usuario.username == model.username);
+            var user = _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.username == model.username);
             var filters = _readOnlyRepository.GetAll<Products>().ToList();
             filters = filters.FindAll(x => x.username.ToUpper().Contains(model.username.ToUpper()));
 var usermodel = new UserModel()

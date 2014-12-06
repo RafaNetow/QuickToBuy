@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class User: IEntity
+    public class Users: IEntity
     {
         public virtual long Id { get; set; }
         public virtual bool Archived { get; protected set; }
