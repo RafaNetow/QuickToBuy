@@ -44,12 +44,13 @@ namespace MiPrimerMVC.Controllers
         //comentariosad
         public ActionResult profile(UserModel model)
         {
-           
+
+            var usermodel = new UserModel(); 
             var user = _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.username == model.username);
             var filters = _readOnlyRepository.GetAll<Products>().ToList();
-           
-            filters = filters.FindAll(x => x.username.ToUpper().Contains(model.username.ToUpper()));
-            var usermodel = new UserModel()
+           if(model.username != null)
+          {  filters = filters.FindAll(x => x.username.ToUpper().Contains(model.username.ToUpper()));
+            usermodel = new UserModel()
             {
                 Name =  model.Name,
                 correo = model.correo,
@@ -60,7 +61,25 @@ namespace MiPrimerMVC.Controllers
                 Productos = filters
                   
             };
-           ;
+          } 
+               else
+            {
+              var usuarioactual = (UserModel)Session["Account"];
+              filters = filters.FindAll(x => x.username.ToUpper().Contains(usuarioactual.username.ToUpper()));
+               usermodel = new UserModel()
+              {
+                  Name = usuarioactual.Name,
+                  correo = usuarioactual.correo,
+                  Lastname = usuarioactual.Lastname,
+                  Id = usuarioactual.Id,
+
+
+                  Productos = filters
+
+              };
+            }
+   
+           
              
             return View("~/Views/Register/profile.cshtml",usermodel);
         }
@@ -187,6 +206,11 @@ namespace MiPrimerMVC.Controllers
             productrepor.Usuario = user;
             var ProductoReportado = _writeOnlyRepository.Create(productrepor);
             return RedirectToAction("Start");
+        }
+        public ActionResult UsuarioVendedor()
+        {
+           
+            return RedirectToAction("profile");
         }
     public static string ArreglarUrl(char[] urlmala, string urlbuena)
         {
