@@ -187,7 +187,7 @@ namespace MiPrimerMVC.Controllers
             
         }
 
-        public ActionResult Reportados()
+        public ActionResult Reportados(Reportado )
         {
             return View();
         }

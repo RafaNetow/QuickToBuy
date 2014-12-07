@@ -136,7 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ModelProductReportado\" />
     <Folder Include="Views\PorfileEditModel\" />
+    <Folder Include="Views\ProductReportModel\" />
     <Folder Include="Views\Product\" />
     <Folder Include="Views\UserModel\" />
   </ItemGroup>
@@ -158,6 +160,7 @@
     <Compile Include="Models\Operaciones.cs" />
     <Compile Include="Models\PorfileEditModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ProductReportModel.cs" />
     <Compile Include="Models\QuestionsModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
