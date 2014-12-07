@@ -231,7 +231,12 @@ namespace MiPrimerMVC.Controllers
             }; 
             return View(usermodel);
         }
-    public static string ArreglarUrl(char[] urlmala, string urlbuena)
+
+        public ActionResult followers()
+        {
+            return RedirectToAction("Start");
+        }
+        public static string ArreglarUrl(char[] urlmala, string urlbuena)
         {
             for (int i = 5; i < urlmala.Length; i++)
             {
