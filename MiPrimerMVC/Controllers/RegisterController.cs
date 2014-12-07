@@ -172,9 +172,20 @@ namespace MiPrimerMVC.Controllers
         {
             return View();
         }
-        public ActionResult CrearReportado()
+        public ActionResult CrearReportado(long id)
         {
-            
+            UserModel usermodel = (UserModel)Session["Account"];
+            var productos = _readOnlyRepository.GetById<Products>(id);
+            Users user = new Users();
+            user.Name = usermodel.Name;
+            user.password = usermodel.Name;
+            user.correo = usermodel.correo;
+          
+
+            Reportado productrepor = new Reportado();
+            productrepor.Producto = productos;
+            productrepor.Usuario = user;
+            var ProductoReportado = _writeOnlyRepository.Create(productrepor);
             return RedirectToAction("Start");
         }
     public static string ArreglarUrl(char[] urlmala, string urlbuena)

@@ -29,24 +29,9 @@ namespace MiPrimerMVC.Controllers
         [HttpPost]
         public ActionResult Upload(ProductModel model)
         {
-            
-          //  if (Request.Files.Count > 0)
-         //   {
-              //  var file = Request.Files[0];
-               
-
-                //file.InputStream
-               // if (file != null)
-                //{
-                   /* byte[] imgData;
-
-                    using (var reader = new BinaryReader(file.InputStream))
-                    {
-                        imgData = reader.ReadBytes((int)file.InputStream.Length);
-                    }*/
-
                 byte[] data;
                 using (Stream inputStream = model.file.InputStream)
+         
                 {
                     MemoryStream memoryStream = inputStream as MemoryStream;
                     if (memoryStream == null)
@@ -56,11 +41,7 @@ namespace MiPrimerMVC.Controllers
                     }
                     data = memoryStream.ToArray();
                 }
-                    // if (file.ContentLength > 0)
-                   // {
-
-
-
+                
 
                          UserModel user = (UserModel)Session["Account"];
                     var urlImage = (string)ImgurUpload.UploadImage(data);
@@ -74,10 +55,7 @@ namespace MiPrimerMVC.Controllers
                          model.username = user.username;
                         TempData["myObj"] = model;
 
-                 //   }
-              //  }
-            
-
+        
             return RedirectToAction("Addproduct", "Register");
         }
 
