@@ -1,7 +1,7 @@
 ﻿@using Domain.Entities
 @using MiPrimerMVC.Controllers
 @using MiPrimerMVC.Models
-@model MiPrimerMVC.Models.UserModel
+@model MiPrimerMVC.Models.ProductReportModel
 @{
     ViewBag.Title = "Reportados";
 }
@@ -38,17 +38,39 @@
 
                     </tr>
 
+                    @Model.ListaDeProductosReportados.ToList();
+                    @if (Model.ListaDeProductosReportados != null)
+                    {
+                        foreach (Reportado operacion in Model.ListaDeProductosReportados)
+                        {
+                            <tr>
+                                <td>
 
-                    <tr>
-                        <td>
-                            hola
-
-                        </td>
+                                    @Html.ActionLink(@operacion.Id.ToString(), "ProductDetail", new { @id = @operacion.Id }, null)
+                                </td>
 
 
+                                <td>@operacion.Producto.Name</td>
+                                <td>@operacion.Usuario.Name @operacion.Usuario.Lastname</td>
+                                <td>@operacion.Producto.username</td>
+                                <td>
+                                    <a href='@Url.Action("CrearReportado", "Register", new { @id = @operacion.Id },null)' target="_blank">
+                                        <img src="https://dl.dropbox.com/s/48uisxcazat1z8p/ProductoReportado.png?dl=0" style="width:50px;height:50px" />
+                                    </a>
+                                    <a href='@Url.Action("UsuarioVendedor", "Register", new { @id = @operacion.Id },null)' target="_blank">
+                                        <img src="https://dl.dropbox.com/s/rf3spwtorcszx4m/IconUser.png?dl=0" style="width:50px;height:50px" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                   
+                        
 
 
-                    </tr>
+
+
+                   
 
 
                 </thead>

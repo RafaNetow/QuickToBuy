@@ -86,9 +86,7 @@
 
                                         <td><img src="@operacion.UrlImage" style="width:100px;height:100px"></td>
                                         <td>
-                                            <a href='@Url.Action("PorfileEdit", "Register", new { @id = @operacion.Id },null)' target="_blank">
-                                                <img src="https://dl.dropbox.com/s/g1yb77jy0wymcf5/Edit.png?dl =0" style="width:50px;height:50px" />
-                                            </a>
+                                            
                                         </td>
 
 
@@ -107,8 +105,10 @@
                     </table>
                 </div>
                 <div class="col-md-6 column">
-                    <img alt="100x100" src="https://dl.dropboxusercontent.com/s/w0v62mxo4vsl2mc/producto.jpg?dl=0" /> <a class="btn btn-primary" @Html.ActionLink("Add", "Addproduct", "Register")></a>
-                </div>
+                    <a href='@Url.Action("UsuarioVendedor", "Register",null)' target="_blank">
+                        <img src="https://dl.dropbox.com/s/ortuwqr18365q3h/Followme.png?dl=0" style="width:50px;height:50px" />
+                    </a>
+</div>
             </div>
         </div>
     </div>

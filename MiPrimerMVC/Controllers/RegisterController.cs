@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
 using Domain.Entities;
 using Domain.Services;
@@ -187,9 +188,12 @@ namespace MiPrimerMVC.Controllers
             
         }
 
-        public ActionResult Reportados(Reportado )
+        public ActionResult Reportados()
         {
-            return View();
+         ProductReportModel model = new ProductReportModel();
+            var productosReportados  =  _readOnlyRepository.GetAll<Reportado>().ToList();
+            model.ListaDeProductosReportados = productosReportados;
+            return View(model);
         }
         public ActionResult CrearReportado(long id)
         {
@@ -207,10 +211,25 @@ namespace MiPrimerMVC.Controllers
             var ProductoReportado = _writeOnlyRepository.Create(productrepor);
             return RedirectToAction("Start");
         }
-        public ActionResult UsuarioVendedor()
+        public ActionResult UsuarioVendedor(long id)
         {
-           
-            return RedirectToAction("profile");
+            var productos = _readOnlyRepository.GetById<Products>(id);
+            var model = _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.username == productos.username);
+            UserModel usuariologeado = (UserModel)Session["Account"];
+            var Prod = _readOnlyRepository.GetAll<Products>().Where(x => x.Archived).ToList();
+            Prod = Prod.FindAll(x => x.username.ToUpper().Contains(productos.username.ToUpper()));
+            var usermodel = new UserModel()
+            {
+                Name = model.Name,
+                username = model.Name,
+                correo = model.correo,
+                Lastname = model.Lastname,
+               Productos =  Prod
+
+
+                
+            }; 
+            return View(usermodel);
         }
     public static string ArreglarUrl(char[] urlmala, string urlbuena)
         {
