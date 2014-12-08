@@ -140,6 +140,7 @@
     <Folder Include="Views\PorfileEditModel\" />
     <Folder Include="Views\ProductReportModel\" />
     <Folder Include="Views\Product\" />
+    <Folder Include="Views\TwilioModel\" />
     <Folder Include="Views\UserModel\" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductReportModel.cs" />
     <Compile Include="Models\QuestionsModel.cs" />
+    <Compile Include="Models\TwilioModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProyectHelpers\ImgurUpload.cs" />

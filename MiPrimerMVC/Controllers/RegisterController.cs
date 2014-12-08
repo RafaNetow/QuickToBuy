@@ -5,6 +5,7 @@ using Domain.Entities;
 using Domain.Services;
 using MiPrimerMVC.Models;
 using NHibernate.Driver;
+using NHibernate.Hql.Ast.ANTLR;
 
 namespace MiPrimerMVC.Controllers
 {
@@ -281,6 +282,12 @@ namespace MiPrimerMVC.Controllers
             return urlbuena;
         }
     public ActionResult SendTwilio ()
+    {
+
+        return View(new TwilioModel());
+    }
+    [HttpPost] 
+    public ActionResult SendTwilio ( TwilioModel model)
     {
 
         return View();
