@@ -27,7 +27,18 @@ namespace MiPrimerMVC.Controllers
 	     [HttpPost]
         public ActionResult Login(AccountLoginModel model)
 	     {
-	         var user= _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.correo == model.Email);
+	         string Admin = "Admin";
+	         string pas = "12";
+             if (model.Email.Equals("Admin") && model.Password.Equals("12"))
+	         {
+	            UserModel modeluser = new UserModel();
+	             modeluser.Name = model.Email;
+                 var results = new RegisterController(_readOnlyRepository, // No recuerdo que hace esta linea de codigo
+	                 _writeOnlyRepository).AdminView(modeluser);
+	             return results;
+	         } 
+	         
+                 var user= _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.correo == model.Email);
              user= _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.username == model.Email);
              var Questions = _readOnlyRepository.GetAll<EQuestions>().ToList();
              var usermodel = new UserModel();
@@ -36,7 +47,7 @@ namespace MiPrimerMVC.Controllers
 
              if (user == null || user.password != model.Password  )
                  return View("~/Views/Home/Index.cshtml");
-
+             
 
 	         usermodel.Name = user.Name;           
              usermodel.Lastname = user.Lastname;

@@ -309,6 +309,11 @@ namespace MiPrimerMVC.Controllers
         var SaveMessage = _writeOnlyRepository.Create(mensaje);
         return RedirectToAction("Start");
     }
+
+        public ActionResult AdminView (UserModel model)
+        {
+            return View("~/Views/Register/AdminView.cshtml");
+        }
     }
 
 }
