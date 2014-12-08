@@ -118,14 +118,26 @@ namespace MiPrimerMVC.Controllers
             Detalle.Name = Model.Name;
             Detalle.Preci = Model.Preci;
             Detalle.Category = Model.Category;
-           Detalle.UrlImage = obj.UrlImage;
+           if(obj != null)
+            Detalle.UrlImage = obj.UrlImage;
             Detalle.Coin = Model.Coin;
             Detalle.username = user.username;
+            var Seguidores = _readOnlyRepository.GetAll<Follows>().ToList();
+
+
+
             
+           
+            if (Seguidores.Count>0) { 
+                var mensaje = new ApiTwilio();
+                mensaje.mensajeTwilio("El comerciante"+Detalle.username +"Ah Creado un producto llamado"+Detalle.Name);
+            }
             var createdOperation = _writeOnlyRepository.Create(Detalle);
             var result = new RegisterController(_readOnlyRepository,// No recuerdo que hace esta linea de codigo
             _writeOnlyRepository).profile(user);
+           
             return result;
+         
         }
                  
         public ActionResult ProductDetail(long id)
@@ -292,7 +304,10 @@ namespace MiPrimerMVC.Controllers
     {
         ApiTwilio twilio = new ApiTwilio();
           twilio.mensajeTwilio(model.Name);
-        return View();
+        MensajesTwilio mensaje = new MensajesTwilio();
+        mensaje.mensaje = model.Name;
+        var SaveMessage = _writeOnlyRepository.Create(mensaje);
+        return RedirectToAction("Start");
     }
     }
 
