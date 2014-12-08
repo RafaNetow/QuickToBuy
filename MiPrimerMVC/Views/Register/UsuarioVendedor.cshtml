@@ -13,11 +13,10 @@
     ViewBag.Title = "profile";
 }
 
-@using (Html.BeginForm("profile", "Register", null, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("followers", "Register", null, FormMethod.Post, new { @class = "form-horizontal" }))
 {
 
 
-}
 
 <div class="container">
     <div class="row clearfix">
@@ -86,7 +85,7 @@
 
                                         <td><img src="@operacion.UrlImage" style="width:100px;height:100px"></td>
                                         <td>
-                                            
+                                            @Html.ActionLink("sigueme", "followers", "Register", new { @id = @operacion.Id }, null)
                                         </td>
 
 
@@ -104,13 +103,12 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-6 column">
-                    <a href='@Url.Action("UsuarioVendedor", "Register",null)' target="_blank">
-                        <img src="https://dl.dropbox.com/s/ortuwqr18365q3h/Followme.png?dl=0" style="width:50px;height:50px" />
-                    </a>
-</div>
+                
+                
+                <button type="submit" class="btn btn-primary">follows</button>
             </div>
         </div>
     </div>
 </div>
+    }
 

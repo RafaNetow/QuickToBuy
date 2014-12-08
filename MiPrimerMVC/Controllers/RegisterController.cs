@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Domain.Entities;
 using Domain.Services;
 using MiPrimerMVC.Models;
+using NHibernate.Driver;
 
 namespace MiPrimerMVC.Controllers
 {
@@ -48,9 +49,17 @@ namespace MiPrimerMVC.Controllers
 
             var usermodel = new UserModel(); 
             var user = _readOnlyRepository.FirstOrDefault<Users>(usuario => usuario.username == model.username);
+           
             var filters = _readOnlyRepository.GetAll<Products>().ToList();
            if(model.username != null)
-          {  filters = filters.FindAll(x => x.username.ToUpper().Contains(model.username.ToUpper()));
+           {
+               var Seguidores = _readOnlyRepository.GetAll<Follows>().Where(x => x.Seguido.username == model.username).ToList();
+               
+
+             
+
+               filters = filters.FindAll(x => x.username.ToUpper().Contains(model.username.ToUpper()));
+          
             usermodel = new UserModel()
             {
                 Name =  model.Name,
@@ -171,7 +180,7 @@ namespace MiPrimerMVC.Controllers
             productos.Name = model.Name;
             productos.Preci  = model.Preci;
             productos.Category= model.Category;
-            productos.UrlImage = model.UrlImage;
+           
             if (model.Archived)
                 productos.Activate();
             else
@@ -232,9 +241,36 @@ namespace MiPrimerMVC.Controllers
             return View(usermodel);
         }
 
-        public ActionResult followers()
+
+        
+        public ActionResult followers(long id )
         {
-            return RedirectToAction("Start");
+            Follows ObjetoFollowers = new Follows();
+               //Objeto Usuario Seguidor
+                   UserModel userlog = (UserModel)Session["Account"];
+                   Users usuariologeado = new Users();       
+                    usuariologeado.Name = userlog.Name;
+                   usuariologeado.Lastname = userlog.Lastname;
+                   usuariologeado.correo = userlog.correo;
+                   usuariologeado.username = userlog.username;
+                   usuariologeado.password = userlog.password;
+            //Objeto Usuario Seguido
+                   var productos = _readOnlyRepository.GetById<Products>(id);
+                 
+                     
+             Users userEntidad = new Users();
+                  userEntidad.username = productos.username;
+                   //userEntidad.Lastname = model.Lastname;
+                   //userEntidad.correo = model.correo;
+                   //userEntidad.username = model.username;
+                   //userEntidad.password = model.password;
+
+            ObjetoFollowers.Seguido = userEntidad;
+            ObjetoFollowers.Seguidor = usuariologeado;
+
+            var AccionDeSeguir = _writeOnlyRepository.Create(ObjetoFollowers);
+            
+            return RedirectToAction("profile");
         }
         public static string ArreglarUrl(char[] urlmala, string urlbuena)
         {
@@ -244,6 +280,11 @@ namespace MiPrimerMVC.Controllers
             }
             return urlbuena;
         }
+    public ActionResult SendTwilio ()
+    {
+
+        return View();
+    }
     }
 
 }

@@ -218,6 +218,7 @@
     <Content Include="Views\Upload\Index.cshtml" />
     <Content Include="Views\Register\Reportados.cshtml" />
     <Content Include="Views\Register\UsuarioVendedor.cshtml" />
+    <Content Include="Views\Register\SendTwilio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

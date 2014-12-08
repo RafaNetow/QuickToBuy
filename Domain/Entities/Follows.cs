@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    class Follows : IEntity
+   public class Follows : IEntity
     {
         public virtual long Id { get; set; }
         public virtual bool Archived { get; protected set; }
+        public virtual Users Seguido { get;  set; }
+        public virtual Users Seguidor { get;  set; } 
         public virtual void Archive()
         {
-            throw new NotImplementedException();
+            Archived = false;
         }
 
         public virtual void Activate()
         {
-            throw new NotImplementedException();
+            Archived = true;
+        }
+
+        public virtual bool IsArchived()
+        {
+            return Archived;
         }
     }
 }
