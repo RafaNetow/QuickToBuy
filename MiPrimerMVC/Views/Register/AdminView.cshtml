@@ -1,7 +1,55 @@
-﻿
+﻿@using Domain.Entities
+@using MiPrimerMVC.Controllers
+@using MiPrimerMVC.Models
+@model MiPrimerMVC.Models.AdminModel
 @{
     ViewBag.Title = "AdminView";
 }
 
-<h2>AdminView</h2>
+<h2>Bienvenido Admin</h2>
+<table class="table">
+    <h2>Productos Reportados</h2>
+    <thead>
+        <tr>
+            <th>
+                
+                    <img src="https://dl.dropbox.com/s/48uisxcazat1z8p/ProductoReportado.png?dl=0" style="width:50px;height:50px" />
+                
+            </th>
+            <th>
+                Producto Reportado
+            </th>
+            <th>
+               Usuario Reportado
+            </th>
+            <th>
+              Usuario Que reporto
+            </th>
+            
+            
+        </tr>
+        @Model.ListaDeProductosReportados.ToList();
+        @if (Model.ListaDeProductosReportados != null)
+        {
+            foreach (Reportado operacion in Model.ListaDeProductosReportados)
+            {
+                <tr>
+                    <td>
 
+                        @Html.ActionLink(@operacion.Id.ToString(), "ProductDetail", new { @id = @operacion.Id }, null)
+                    </td>
+
+
+                    <td>@operacion.Producto.Name</td>
+                    <td>@operacion.Producto.username</td>
+                    <td>@operacion.Producto.Name</td>
+                    <td>
+                       
+                        
+                    </td>
+                </tr>
+            }
+        }
+    </thead>
+
+</table>

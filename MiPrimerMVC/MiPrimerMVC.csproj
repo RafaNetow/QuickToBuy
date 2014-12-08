@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AdminModel\" />
     <Folder Include="Views\ApiTwilio\" />
     <Folder Include="Views\ModelProductReportado\" />
     <Folder Include="Views\PorfileEditModel\" />
@@ -164,6 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountLoginModel.cs" />
+    <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\Calculadora.cs" />
     <Compile Include="Models\Operaciones.cs" />
     <Compile Include="Models\PorfileEditModel.cs" />
