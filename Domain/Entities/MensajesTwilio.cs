@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    class MensajesTwilio : IEntity
+    public class MensajesTwilio : IEntity
     {
         public virtual long Id { get; set; }
         public virtual bool Archived { get; protected set; }

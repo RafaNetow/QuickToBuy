@@ -12,7 +12,7 @@ namespace MiPrimerMVC.Models
     {
         //
         // GET: /UserModel/
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         [Required(ErrorMessage = "Name requerid")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Lastname requerid")]

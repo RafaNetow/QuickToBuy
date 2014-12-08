@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Domain.Entities;
 using Domain.Services;
 using MiPrimerMVC.Models;
+using MiPrimerMVC.ProyectHelpers;
 using NHibernate.Driver;
 using NHibernate.Hql.Ast.ANTLR;
 
@@ -289,7 +290,8 @@ namespace MiPrimerMVC.Controllers
     [HttpPost] 
     public ActionResult SendTwilio ( TwilioModel model)
     {
-
+        ApiTwilio twilio = new ApiTwilio();
+          twilio.mensajeTwilio(model.Name);
         return View();
     }
     }

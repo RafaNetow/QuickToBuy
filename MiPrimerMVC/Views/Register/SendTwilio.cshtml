@@ -9,13 +9,17 @@
 <legend>Mensaje al proveedor</legend>
 
 <!-- Text input-->
+@using (Html.BeginForm("SendTwilio", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 <div class="form-group">
     <label class="col-sm-2 control-label" for="textinput">Name</label>
     <div class="col-sm-10">
 
         <label class="col-sm-2 control-label" for="textinput">Menssaje</label>
-        @Html.TextBoxFor(x => x., new { @class = "form-control input-lg" })
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control input-lg" })
 
     </div>
 </div>
+}
 
+   
