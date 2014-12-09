@@ -304,9 +304,9 @@ namespace MiPrimerMVC.Controllers
     {
         ApiTwilio twilio = new ApiTwilio();
           twilio.mensajeTwilio(model.Name);
-        MensajesTwilio mensaje = new MensajesTwilio();
-        mensaje.mensaje = model.Name;
-        var SaveMessage = _writeOnlyRepository.Create(mensaje);
+        MensajesTwilio mensajes = new MensajesTwilio();
+        mensajes.mensaje = model.Name;
+        var e = _writeOnlyRepository.Create(mensajes);
         return RedirectToAction("Start");
             
     }
@@ -314,10 +314,11 @@ namespace MiPrimerMVC.Controllers
         public ActionResult AdminView (UserModel model)
         {
             var reportados = _readOnlyRepository.GetAll<Reportado>().ToList();
+             var Twilers = _readOnlyRepository.GetAll<MensajesTwilio>().ToList();
             AdminModel modelAdmin = new AdminModel()
             {
-                ListaDeProductosReportados = reportados
-               
+                ListaDeProductosReportados = reportados,
+                MensajesTwilio =  Twilers
 
             };
 

@@ -13,6 +13,6 @@ namespace MiPrimerMVC.Models
         // GET: /AdminModel/
         public List<Reportado> ListaDeProductosReportados { get; set; }
         public List<ProductModel> ListaDeModelos { get; set; } 
-        public List<TwilioModel> MensajesTwilio { get;set;}
+        public List<MensajesTwilio> MensajesTwilio { get;set;}
         }
 	}
